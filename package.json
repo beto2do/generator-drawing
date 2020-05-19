@@ -1,0 +1,17 @@
+{
+  "name": "generator-drawing",
+  "version": "0.1.0",
+  "description": "",
+  "files": [
+    "app",
+    "router"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "humberto2do",
+  "license": "ISC",
+  "dependencies": {
+    "yeoman-generator": "^4.10.1"
+  }
+}
