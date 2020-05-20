@@ -38,12 +38,28 @@ module.exports = class extends Generator {
         );
         this.fs.copyTpl(
             this.templatePath('styles.css'),
-            this.destinationPath(`${projectName}/styles.css`),
+            this.destinationPath(`${projectName}/styles.css`)
+        );
+        this.fs.copyTpl(
+            this.templatePath('readme.md'),
+            this.destinationPath(`${projectName}/readme.md`),
             { title: projectName }
         );
         this.fs.copyTpl(
-            this.templatePath('readme.dm'),
-            this.destinationPath(`${projectName}/readme.dm`),
+            this.templatePath('.gitignore'),
+            this.destinationPath(`${projectName}/.gitignore`)
+        );
+        this.fs.copyTpl(
+            this.templatePath('webpack.config.js'),
+            this.destinationPath(`${projectName}/webpack.config.js`)
+        );
+        this.fs.copyTpl(
+            this.templatePath('index.js'),
+            this.destinationPath(`${projectName}/src/index.js`)
+        );
+        this.fs.copyTpl(
+            this.templatePath('package.json'),
+            this.destinationPath(`${projectName}/package.json`),
             { title: projectName }
         );
     }
