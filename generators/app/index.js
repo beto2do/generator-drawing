@@ -1,21 +1,10 @@
 var Generator = require('yeoman-generator');
 
 module.exports = class extends Generator {
-    // The name `constructor` is important here
+
     constructor(args, opts) {
         // Calling the super constructor is important so our generator is correctly set up
         super(args, opts);
-
-        // Next, add your custom code
-        this.option('babel'); // This method adds support for a `--babel` flag
-    }
-
-    method1() {
-        this.log('method 1 just ran');
-    }
-    
-    _private_method() {
-        console.log('private hey');
     }
 
     async prompting() {
@@ -30,6 +19,13 @@ module.exports = class extends Generator {
     }
 
     writing() {
+        const pkgJson = {
+            devDependencies: {
+                "webpack": "^4.43.0",
+                "webpack-cli": "^3.3.11"
+            }
+        };
+      
         const projectName = this.answers.name || 'drawing-project';
         this.fs.copyTpl(
           this.templatePath('index.html'),
@@ -62,5 +58,13 @@ module.exports = class extends Generator {
             this.destinationPath(`${projectName}/package.json`),
             { title: projectName }
         );
+
+        this.fs.extendJSON(this.destinationPath(`${projectName}/package.json`), pkgJson);
+        
+        this.destinationRoot(`${projectName}/`);
+    }
+
+    install() {
+        this.npmInstall();
     }
 };
