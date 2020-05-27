@@ -22,10 +22,11 @@ module.exports = class extends Generator {
         const pkgJson = {
             devDependencies: {
                 "webpack": "^4.43.0",
-                "webpack-cli": "^3.3.11"
+                "webpack-cli": "^3.3.11",
+                "nodemon": "^2.0.4",
             }
         };
-      
+
         const projectName = this.answers.name || 'drawing-project';
         this.fs.copyTpl(
           this.templatePath('index.html'),
@@ -60,7 +61,7 @@ module.exports = class extends Generator {
         );
 
         this.fs.extendJSON(this.destinationPath(`${projectName}/package.json`), pkgJson);
-        
+
         this.destinationRoot(`${projectName}/`);
     }
 

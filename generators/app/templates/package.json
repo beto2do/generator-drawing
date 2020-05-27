@@ -5,10 +5,13 @@
     "main": "dist/index.js",
     "scripts": {
         "build": "webpack",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "watch": "nodemon -e html,js,css -x \"npm run build\""
+    },
+    "nodemonConfig": {
+      "ignore": ["dist/*"],
+      "delay": "2500"
     },
     "keywords": ["canvas"],
     "author": "humberto2do",
     "license": "ISC"
 }
-  
